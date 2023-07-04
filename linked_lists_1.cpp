@@ -21,9 +21,9 @@ bool hasCycle(ListNode *head) {
     ListNode *curr = head;
 
     while(curr->next != nullptr){
-        if(umap.contains(curr->val)){
-            auto itr = umap.find(curr->next->val);
-            p = itr->first;
+        if(auto srch_itr = umap.find(curr->next->val); srch_itr != umap.end()){
+            p = srch_itr->first;
+            printf("%i\n", p);
             return true;
         }
 
@@ -32,6 +32,7 @@ bool hasCycle(ListNode *head) {
         curr = curr->next;
     }
 
+    printf("%i\n", p);
     return false;
 }
 
