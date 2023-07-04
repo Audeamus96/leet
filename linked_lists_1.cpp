@@ -1,4 +1,6 @@
 // Leetcode 141: https://leetcode.com/problems/linked-list-cycle/
+// Note: this question is weird in that it asks you to track the position of the node at the end of the loop
+// but you don't return it  or anything.
 
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "utils\catch.hpp"
@@ -10,31 +12,61 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
  };
 
+// returns true if the linked list has a loop in it.
+// Assumes that the values of linked list elements are unique
 bool hasCycle(ListNode *head) {
     std::unordered_map<int, int> umap;
-    bool loop_exists = false;
+    int p = -1;
     int idx = 0;
     ListNode *curr = head;
 
     while(curr->next != nullptr){
-        if(!umap.contains(curr->val)){
+        if(umap.contains(curr->val)){
+            auto itr = umap.find(curr->next->val);
+            p = itr->first;
             return true;
         }
+
+        umap.insert({curr->val, idx});
         idx++;
         curr = curr->next;
     }
 
-    return loop_exists;
+    return false;
 }
 
-
-
-TEST_CASE( "Simple, no loop", "[hasCycle]" ) {
+// ---------- Tests -----------
+TEST_CASE( "Simple linked list", "[hasCycle]" ) {
     ListNode head = ListNode(1);
     ListNode n0 = ListNode(2);
     head.next = &n0;
 
-    REQUIRE( hasCycle(&head) == 0 );
+    SECTION("no loop"){
+        REQUIRE_FALSE(hasCycle(&head));
+    }
+    
+    SECTION("loop 1"){
+        n0.next = &head;
+        REQUIRE(hasCycle(&head));
+    }
+
+    SECTION("no loop - longer list"){
+        ListNode n1 = ListNode(0);
+        ListNode n2 = ListNode(-4);
+        n0.next = &n1;
+        n1.next = &n2;
+        REQUIRE_FALSE(hasCycle(&head));
+    }
+
+    SECTION("loop - longer list"){
+        ListNode n1 = ListNode(0);
+        ListNode n2 = ListNode(-4);
+        n0.next = &n1;
+        n1.next = &n2;
+        n2.next = &n0;
+        REQUIRE(hasCycle(&head));
+    }
 }
+
 
 
