@@ -1,5 +1,10 @@
 @echo off
 
+rem Compiles input file then links it to main file to create executable
+rem Arguments:
+rem     ARG1: source file location
+rem     ARG2: name of object file (do not include file extension)
+
 rem Check if the correct number of arguments are provided
 if "%~2"=="" (
     echo Usage: compile.bat source.cpp output.obj
