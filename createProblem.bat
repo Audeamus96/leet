@@ -27,7 +27,6 @@ echo #include "headers\%problem_name%.hpp">"%current_dir%\solutions\%problem_nam
 
 
 rem Create the test file (tests/test_problem_name.cpp)
-echo #define CATCH_CONFIG_MAIN>"%current_dir%\tests\test_%problem_name%.cpp"
 echo #include "..\catch.hpp">>"%current_dir%\tests\test_%problem_name%.cpp"
 echo.>>"%current_dir%\tests\test_%problem_name%.cpp"
 echo TEST_CASE("Test %problem_name%") {>>"%current_dir%\tests\test_%problem_name%.cpp"

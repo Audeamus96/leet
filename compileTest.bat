@@ -33,7 +33,7 @@ if %errorlevel% equ 0 (
 )
 
 rem Link test-main to the test file and create executable
-g++ .\build\test_main.o .\build\dp_coins.o .\build\test_dp_coins.o -o test
+g++ .\build\test_main.o .\build\%1.o .\build\test_%1.o -o test
 
 rem Check the result of the compilation
 if %errorlevel% equ 0 (
