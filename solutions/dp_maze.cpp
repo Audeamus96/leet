@@ -4,6 +4,8 @@
 
 // Problem: Given and NxM grid, in how many ways can you go from the top-left
 // to the bottom-right corner moving only down or right.
+// Note: you really don't need dp for this, 
+// basic counting principle get you a solution of (N+M-2)! / [(N-1)!(M-1)!]
 
 // Naive recursive approach
 int maze_paths_naive(int N, int M){
