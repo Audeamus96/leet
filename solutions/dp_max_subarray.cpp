@@ -5,7 +5,7 @@
 
 #define isLessThanOne(x) (x < 1)
 
-// Leetcode 53: Maximum Subarray
+// Leetcode 53: Maximum Subarray (https://leetcode.com/problems/maximum-subarray/)
 // Given an integer array nums, find the subarray with the largest sum, and return its sum.
 // Useful Constraints:
 //      1 <= nums.length <= 10^5
