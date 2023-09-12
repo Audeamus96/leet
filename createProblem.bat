@@ -27,6 +27,7 @@ echo #include "headers\%problem_name%.hpp">"%current_dir%\solutions\%problem_nam
 
 
 rem Create the test file (tests/test_problem_name.cpp)
+echo #include "..\solutions\headers\%1.hpp">>"%current_dir%\tests\test_%problem_name%.cpp"
 echo #include "..\catch.hpp">>"%current_dir%\tests\test_%problem_name%.cpp"
 echo.>>"%current_dir%\tests\test_%problem_name%.cpp"
 echo TEST_CASE("Test %problem_name%") {>>"%current_dir%\tests\test_%problem_name%.cpp"
@@ -34,7 +35,7 @@ echo     // Add your test cases here>>"%current_dir%\tests\test_%problem_name%.c
 echo }>>"%current_dir%\tests\test_%problem_name%.cpp"
 
 rem Create the header file (solutions/headers/problem_name.h)
-echo.>"%current_dir%\solutions\headers\%problem_name%.hpp"
+echo #pragma once>"%current_dir%\solutions\headers\%problem_name%.hpp"
 
 echo Files created successfully:
 echo - %current_dir%\solutions\%problem_name%.cpp

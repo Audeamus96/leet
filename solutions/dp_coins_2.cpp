@@ -38,8 +38,3 @@ unsigned long long int num_ways_dp(int m, std::vector<int> coins){
 
     return num_ways[m];
 }
-
-// int main() {
-//     printf("ans = %i\n", num_ways_naive(6, {1, 4, 5}));
-//     printf("ans = %llu\n", num_ways_dp(87, {1, 4, 5, 8}));
-// }
